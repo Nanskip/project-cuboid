@@ -16,9 +16,10 @@ loadGitHub = function()
         start = obj
         start()
     end)
-    loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/lua.lua",
+    loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/start.lua",
     function(obj)
         tick = obj
+        tick()
     end)
 end
 
