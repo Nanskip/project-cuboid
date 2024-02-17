@@ -1,4 +1,4 @@
 -- just for debug
 print("start function started")
 
-print(world_generator.text)
+print(_ENV.world_generator.text)
