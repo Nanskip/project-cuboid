@@ -21,8 +21,8 @@ Client.OnStart = function()
 end
 
 Client.Tick = function(dt)
- -- i can't implement tick as github file, so i should edit it here.
- -- nothing yet.
+    deltaTime = 60/(1/dt)
+    if tick ~= nil then tick() end
 end
 
 -- load everything
@@ -31,20 +31,29 @@ loadGitHub = function()
     function(obj)
         world_generator = obj() -- set this as module
     end)
+    loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/start.lua",
+    function(obj)
+        start = obj -- set this as start function
+        start()
+    end)
+    loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/tick.lua",
+    function(obj)
+        tick = obj -- set this as tick function
+    end)
 end
 
 -- loading function
 loadFromGitHub = function(url, callback)
     HTTP:Get(url, function(res)
         if res.StatusCode ~= 200 then
-          print("Error on github loading. Code: " .. res.StatusCode)
-          return
+            print("Error on github loading. Code: " .. res.StatusCode)
+            return
         end
-        local obj = load(res.Body:ToString())
+        local obj = load(res.Body:ToString(), nil, "bt", _ENV)
         print(res.Body:ToString())
 
         callback(obj)
-      end)
+        end)
 end
 --[[
  ____  ____   __     __  ____   ___  ____         ___  _  _  ____   __    __   ____ 
