@@ -36,7 +36,8 @@ loadFromGitHub = function(url, callback)
           print("Error on github loading. Code: " .. res.StatusCode)
           return
         end
-        local obj = load(res.Body:ToString())
+        local obj = dofilestring(res.Body:ToString())
+        print(res.Body:ToString())
 
         callback(obj)
       end)
