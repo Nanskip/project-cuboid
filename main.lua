@@ -3,7 +3,7 @@ Client.OnStart = function()
 end
 
 Client.Tick = function(dt)
-    if tick ~= nil then tick(dt) end
+    if tickfunc ~= nil then tickfunc(dt) end
 end
 
 loadGitHub = function()
@@ -16,10 +16,10 @@ loadGitHub = function()
         start = obj
         start()
     end)
-    loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/start.lua",
+    loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/tick.lua",
     function(obj)
-        tick = obj
-        tick()
+        tickfunc = obj
+        tickfunc()
     end)
 end
 
