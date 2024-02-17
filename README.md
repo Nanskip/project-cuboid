@@ -1,3 +1,5 @@
+![Alt text](https://github.com/Nanskipp/project-cuboid/blob/main/game_logo.png?raw=true)
+
 # Project Cuboid
 ![Alt text](https://github.com/Nanskipp/project-cuboid/blob/main/game_logo.png?raw=true)
 
