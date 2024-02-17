@@ -3,13 +3,22 @@ Client.OnStart = function()
 end
 
 Client.Tick = function(dt)
-    -- nothing
+    if tick ~= nil then tick(dt) end
 end
 
 loadGitHub = function()
     loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/world_generator.lua",
     function(obj)
-        test = obj
+        world_generator = obj()
+    end)
+    loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/start.lua",
+    function(obj)
+        start = obj
+        start()
+    end)
+    loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/lua.lua",
+    function(obj)
+        tick = obj
     end)
 end
 
@@ -19,7 +28,7 @@ loadFromGitHub = function(url, callback)
           print("Error on github loading. Code: " .. res.StatusCode)
           return
         end
-        local obj = load(res.Body:ToString())()
+        local obj = load(res.Body:ToString())
 
         callback(obj)
       end)

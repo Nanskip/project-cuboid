@@ -1,0 +1,1 @@
+if a then print("a is true!") end
