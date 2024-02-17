@@ -1,3 +1,5 @@
+![Alt text](https://github.com/Nanskipp/project-cuboid/blob/main/game_logo.png?raw=true)
+
 # Project Cuboid
 Welcome to Project Cuboid, a game in Cubzh inspired by **Project Zomboid**. This project aims to bring the captivating survival and exploration elements of **Project Zomboid** into the **Cubzh**, offering a unique gaming experience.
 
