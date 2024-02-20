@@ -39,6 +39,7 @@ loadGitHub = function()
     loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/world_generator.lua",
     function(obj)
         world_generator = obj() -- set this as module
+        print(world_generator.version)
     end)
     loadFromGitHub("https://raw.githubusercontent.com/Nanskipp/project-cuboid/main/scripts/start.lua",
     function(obj)
@@ -59,7 +60,6 @@ loadFromGitHub = function(url, callback)
             return
         end
         local obj = load(res.Body:ToString(), nil, "bt", _ENV)
-        print(res.Body:ToString())
 
         githubScriptsCount = githubScriptsCount + 1
         callback(obj)

@@ -3,6 +3,8 @@
 
 generator = {}
 
+generator.version = 0
+
 generator.createWorld = function(config)
     local defaultConfig = {
         chunkSize = 8,
@@ -19,9 +21,9 @@ generator.createWorld = function(config)
     for x=0, worldSize.X do
         world[x] = {}
         for y=0, worldSize.Y do
-            chunk = {}
+            local chunk = {}
             for chunkX=1, chunkSize do
-                cY = {}
+                local cY = {}
                 for chunkY=1, chunkSize do
                     local data = {
                         color = Color(255, 255, 0)
@@ -39,10 +41,9 @@ generator.createWorld = function(config)
         for y=0, #world[x] do
             for chunkX=1, chunkSize do
                 for chunkY=1, chunkSize do
-                    --local block = Block(world[x][y][chunkX][chunkY].color, Number3(x*chunkX, 0, y*chunkY))
+                    local block = Block(world[x][y][chunkX][chunkY].color, Number3(x*chunkX, 0, y*chunkY))
 
-                    print(world[x][y][chunkX][chunkY].color)
-                    --Map:AddBlock(block)
+                    Map:AddBlock(block)
                 end
             end
         end
