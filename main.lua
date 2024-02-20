@@ -16,6 +16,8 @@
 
 -- only load everything from github
 
+Config.Map = "nanskip.red_voxel"
+
 Client.OnStart = function()
     githubScriptsCount = 0
     loadGitHub()
