@@ -35,17 +35,19 @@ generator.createWorld = function(config)
         end
     end
 
-    for x=0, worldSize.X do
-        for y=0, worldSize.Y do
+    for x=0, #world do
+        for y=0, #world[x] do
             for chunkX=1, chunkSize do
                 for chunkY=1, chunkSize do
-                    local block = Block(world[x][y][chunkX][chunkY], Number3(x*chunkX, 0, y*chunkY))
+                    local block = Block(world[x][y][chunkX][chunkY].color, Number3(x*chunkX, 0, y*chunkY))
 
+                    print(block)
                     Map:AddBlock(block)
                 end
             end
         end
     end
+    print("world generated.")
 end
 
 return generator
