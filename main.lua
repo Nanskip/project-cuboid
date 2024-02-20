@@ -9,7 +9,7 @@
                                    / /   __ __       / |/ / ___ _  ___   ___  / /__  (_)   ___ 
                                   / _ \ / // /      /    / / _ `/ / _ \ (_-< /  '_/ / /   / _ \
                                  /_.__/ \_, /      /_/|_/  \_,_/ /_//_//___//_/\_\ /_/   / .__/
-                                     /___/                                              /_/    
+                                       /___/                                            /_/    
  Inspired by Project Zomboid game.
 
 ]]--
@@ -17,12 +17,19 @@
 -- only load everything from github
 
 Client.OnStart = function()
+    githubScriptsCount = 0
     loadGitHub()
 end
 
 Client.Tick = function(dt)
-    deltaTime = 60/(1/dt)
-    if tick ~= nil then tick() end
+    deltaTime = 62/(1/dt)
+    if githubScriptsCount == 3 then
+        githubScriptsCount = nil
+
+        start()
+    elseif githubScriptsCount == nil then
+        tick()
+    end
 end
 
 -- load everything
@@ -52,6 +59,7 @@ loadFromGitHub = function(url, callback)
         local obj = load(res.Body:ToString(), nil, "bt", _ENV)
         print(res.Body:ToString())
 
+        githubScriptsCount = githubScriptsCount + 1
         callback(obj)
         end)
 end
