@@ -3,7 +3,7 @@
 
 generator = {}
 
-generator.version = 0
+generator.version = 1
 
 generator.createWorld = function(config)
     local defaultConfig = {
@@ -18,9 +18,9 @@ generator.createWorld = function(config)
 
     world = {}
 
-    for x=0, worldSize.X do
+    for x=1, worldSize.X do
         world[x] = {}
-        for y=0, worldSize.Y do
+        for y=1, worldSize.Y do
             local chunk = {}
             for chunkX=1, chunkSize do
                 local cY = {}
@@ -37,8 +37,8 @@ generator.createWorld = function(config)
         end
     end
 
-    for x=0, #world do
-        for y=0, #world[x] do
+    for x=1, worldSize.X do
+        for y=1, worldSize.Y do
             for chunkX=1, chunkSize do
                 for chunkY=1, chunkSize do
                     local block = Block(world[x][y][chunkX][chunkY].color, Number3(x*chunkX, 0, y*chunkY))
